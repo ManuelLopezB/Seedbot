@@ -9,7 +9,7 @@ Seedbot is the final proyect for our mechatronics class.
 
 ## Software Used
 - [Python 3.8.10](https://www.python.org/)
-- [Raspberry Pi OS (64-bit)](https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-64-bit)
+- [Raspberry Pi OS Lite (64-bit)](https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-64-bit)
 - [Flask](https://flask.palletsprojects.com/en/2.0.x/)
 
 
