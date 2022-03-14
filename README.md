@@ -8,13 +8,12 @@ Seedbot is the final proyect for our mechatronics class.
 - [Raspberry Pi 3 Model B+](https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/)
 
 ## Software Used
-- [Python 3.8.10](https://www.python.org/)
-- [Raspberry Pi OS Lite (64-bit)](https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-64-bit)
+- [Python](https://www.python.org/)
 - [Flask](https://flask.palletsprojects.com/en/2.0.x/)
-
+- [Raspberry Pi OS Lite (64-bit)](https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-64-bit)
 
 ## Requirements
-- Python 3+
+- Python 3.7+
 - Install the required pip packages with:
   
         pip install -r requirements.txt
