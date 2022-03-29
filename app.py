@@ -1,6 +1,7 @@
+from time import sleep
+
 from flask import Flask
 from gpiozero import LED
-from time import sleep
 
 app = Flask(__name__)
 led = LED(21)
