@@ -8,19 +8,19 @@ led = LED(21)
 
 
 @app.route("/")
-def hello_world():
-    led.close()
+def home():
+    led.off()
     return "Seedbot"
 
 @app.route('/on')
 def on():
    led.on()
-   return 'Led Encendido'
+   return 'Led On'
 
 @app.route('/off')
 def off():
    led.off()
-   return 'Led Apagado'
+   return 'Led Off'
 
 
 if __name__ == '__main__':
