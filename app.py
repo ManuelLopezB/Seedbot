@@ -22,12 +22,12 @@ def about():
 @app.route('/on')
 def on():
    led.on()
-   return 'Led On'
+   return render_template('home.html', title='Led On')
 
 @app.route('/off')
 def off():
    led.off()
-   return 'Led Off'
+   return render_template('home.html', title='Led Off')
 
 
 if __name__ == '__main__':
