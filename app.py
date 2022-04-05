@@ -3,10 +3,11 @@ from gpiozero import LED
 import cv2
 
 app = Flask(__name__)
+# led = LED(21)
 video = cv2.VideoCapture(0)
 
 
-@app.route('/')
+@app.route("/")
 @app.route("/home")
 def home():
     # led.off()
