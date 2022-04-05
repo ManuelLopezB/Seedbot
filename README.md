@@ -13,7 +13,7 @@ Seedbot is the final proyect for our mechatronics class.
 - [Raspberry Pi OS Lite (64-bit)](https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-64-bit)
 
 ## Requirements
-- Python 3.7+
+- Python 3.8+
 - Install the required pip packages with:
   
         pip install -r requirements.txt
