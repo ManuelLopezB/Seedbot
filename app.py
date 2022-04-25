@@ -1,12 +1,14 @@
 from flask import Flask, Response, render_template, flash, redirect, url_for
 from forms import LoginForm
-from gpiozero import LED
+from gpiozero import LED, Servo
+from time import sleep
 import os
 import cv2
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '103b4cf3f6db7583cf1cd99537436c5d'
 # led = LED(21)
+servo = Servo(17)
 if os.environ.get('WERKZEUG_RUN_MAIN') or Flask.debug is False:
     video = cv2.VideoCapture(0)
 
@@ -35,7 +37,19 @@ def about():
 @app.route('/on')
 def on():
 #    led.on()
-   return render_template('home.html', title='Led On')
+    servo.mid()
+    print("mid")
+    sleep(0.5)
+    servo.min()
+    print("min")
+    sleep(1)
+    servo.mid()
+    print("mid")
+    sleep(0.5)
+    servo.max()
+    print("max")
+    sleep(1)
+    return render_template('home.html', title='Led On')
 
 @app.route('/off')
 def off():
