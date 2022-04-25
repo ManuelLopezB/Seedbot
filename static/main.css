@@ -24,3 +24,8 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.alert {
+  height: 30;
+  width: 300px;
+}
