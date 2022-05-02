@@ -1,10 +1,9 @@
-from email.policy import default
 from flask import Flask, Response, render_template, flash, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from forms import LoginForm
+from models import User
 # from gpiozero import LED, Servo
 from time import sleep
-from datetime import datetime
 import os
 import cv2
 
@@ -17,19 +16,6 @@ db = SQLAlchemy(app)
 # servo = Servo(17)
 if os.environ.get('WERKZEUG_RUN_MAIN') or Flask.debug is False:
     video = cv2.VideoCapture(0)
-
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), unique=True, nullable=False)
-    password = db.Column(db.String(60), nullable=False)
-    date_added = db.Column(db.DateTime, default=datetime.utcnow)
-
-    def __repr__(self):
-        return f"User('{self.username}', '{self.date_added}')"
-
-
-
 
 @app.route('/')
 @app.route('/home')
