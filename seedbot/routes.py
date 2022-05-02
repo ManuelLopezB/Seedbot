@@ -1,11 +1,12 @@
-from flask import Response, render_template, flash, redirect, url_for
+from flask import Response, render_template, flash, redirect, url_for, Flask
 from seedbot import app
 from seedbot.models import User
 from seedbot.forms import LoginForm
 import cv2
 import os
 
-if os.environ.get('WERKZEUG_RUN_MAIN') or app.debug is False:
+
+if os.environ.get('WERKZEUG_RUN_MAIN') or Flask.debug is False:
     video = cv2.VideoCapture(0)
 
 @app.route('/')
