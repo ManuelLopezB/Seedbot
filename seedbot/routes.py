@@ -1,20 +1,11 @@
-from flask import Flask, Response, render_template, flash, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
-from forms import LoginForm
-from models import User
-# from gpiozero import LED, Servo
-from time import sleep
-import os
+from flask import Response, render_template, flash, redirect, url_for
+from seedbot import app
+from seedbot.models import User
+from seedbot.forms import LoginForm
 import cv2
+import os
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = '103b4cf3f6db7583cf1cd99537436c5d'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-# led = LED(21)
-# servo = Servo(17)
-if os.environ.get('WERKZEUG_RUN_MAIN') or Flask.debug is False:
+if os.environ.get('WERKZEUG_RUN_MAIN') or app.debug is False:
     video = cv2.VideoCapture(0)
 
 @app.route('/')
@@ -66,6 +57,3 @@ def video_feed():
     global video
     return Response(gen(video),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', threaded=True, debug=True)
