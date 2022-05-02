@@ -48,6 +48,8 @@ def admin():
 def gen(video):
     while True:
         success, image = video.read()
+        # Para girar la imagen ROTATE_90_CLOCKWISE ROTATE_180
+        # image = cv2.rotate(image, cv2.cv2.ROTATE_180)
         ret, jpeg = cv2.imencode('.jpg', image)
         frame = jpeg.tobytes()
         yield (b'--frame\r\n'
