@@ -42,13 +42,18 @@ def admin():
 #    led.off()
    return render_template('admin.html', title='Admin', segment='admin')
 
+@app.route('/siembra_t')
+def siembra_t():
+    arduino.write(b'2')
+    return ("nothing")
+
 @app.route('/riego_t')
 def riego_t():
     arduino.write(b'1')
     return ("nothing")
 
-@app.route('/riego_f')
-def riego_f():
+@app.route('/apagar')
+def apagar():
     arduino.write(b'0')
     return ("nothing")
 
