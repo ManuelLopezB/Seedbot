@@ -3,10 +3,11 @@ from seedbot import app
 from seedbot.models import User
 from seedbot.forms import LoginForm
 import serial
+import time
 import cv2
 import os
 
-arduino = serial.Serial('/dev/ttyACM0', 9600)
+arduino = serial.Serial('/dev/ttyACM0', 115200)
 
 if os.environ.get('WERKZEUG_RUN_MAIN') or Flask.debug is False:
     video = cv2.VideoCapture(0)
@@ -14,7 +15,10 @@ if os.environ.get('WERKZEUG_RUN_MAIN') or Flask.debug is False:
 @app.route('/')
 @app.route('/home')
 def home():
-    # led.off()
+    time.sleep(1)
+    arduino.flushInput()
+    arduino.setDTR(True)
+    time.sleep(2)
     return render_template('home.html', title='Home', segment='home')
 
 @app.route('/login', methods=['GET', 'POST'])
