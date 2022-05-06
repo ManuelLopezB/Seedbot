@@ -1,5 +1,29 @@
 {% extends "layout.html" %}
 {% block content %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+        $(function() {
+          $('a#riego_v').on('click', function(e) {
+            e.preventDefault()
+            $.getJSON('/riego_v',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+        $(function() {
+    $('a#riego_f').on('click', function(e) {
+      e.preventDefault()
+      $.getJSON('/riego_f',
+          function(data) {
+        //do nothing
+      });
+      return false;
+    });
+  });
+</script>
+
 <center>
   <h1>Welcome to SeedBot</h1>
   <img class="rounded img-fluid" src="{{ url_for('video_feed') }}">
@@ -15,8 +39,8 @@
         Preparar Tierra
       </div>
       <div class="col">
-        <a class="btn btn-primary" href="{{ url_for('riego_v') }}" role="button">On</a>
-        <a class="btn btn-primary" href="{{ url_for('riego_f') }}" role="button">Off</a>
+        <a class="btn btn-primary" href=# id=riego_v role="button">On</a>
+        <a class="btn btn-primary" href="#" id=riego_f role="button">Off</a>
       </div>
       <div class="col">
         <a class="btn btn-primary" href="#" role="button">On</a>

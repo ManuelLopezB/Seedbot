@@ -7,7 +7,7 @@ import time
 import cv2
 import os
 
-arduino = serial.Serial('/dev/ttyACM0', 115200)
+arduino = serial.Serial("/dev/ttyACM0", 115200, timeout=1)
 
 if os.environ.get('WERKZEUG_RUN_MAIN') or Flask.debug is False:
     video = cv2.VideoCapture(0)
@@ -37,20 +37,18 @@ def login():
 def about():
     return render_template('about.html', title='About', segment='about')
 
-@app.route('/riego_v')
-def riego_v():
-    arduino.write('0'.encode())
-    return render_template('home.html')
-
-@app.route('/riego_f')
-def riego_f():
-    arduino.write('1'.encode())
-    return render_template('home.html')
-
 @app.route('/admin')
 def admin():
 #    led.off()
    return render_template('admin.html', title='Admin', segment='admin')
+
+@app.route('/riego_v')
+def riego_v():
+    arduino.write(b'1')
+
+@app.route('/riego_f')
+def riego_f():
+    arduino.write(b'0')
 
 def gen(video):
     while True:
