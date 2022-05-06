@@ -35,12 +35,12 @@ def about():
 
 @app.route('/riego_v')
 def riego_v():
-    arduino.write('rv'.encode())
+    arduino.write('rv')
     return render_template('home.html')
 
 @app.route('/riego_f')
 def riego_f():
-    arduino.write('rf'.encode())
+    arduino.write('rf')
     return render_template('home.html')
 
 @app.route('/admin')
