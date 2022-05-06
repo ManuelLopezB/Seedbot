@@ -3,9 +3,9 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type=text/javascript>
         $(function() {
-          $('a#riego_v').on('click', function(e) {
+          $('a#riego_t').on('click', function(e) {
             e.preventDefault()
-            $.getJSON('/riego_v',
+            $.getJSON('/riego_t',
                 function(data) {
               //do nothing
             });
@@ -39,7 +39,7 @@
         Preparar Tierra
       </div>
       <div class="col">
-        <a class="btn btn-primary" href=# id=riego_v role="button">On</a>
+        <a class="btn btn-primary" href=# id=riego_t role="button">On</a>
         <a class="btn btn-primary" href="#" id=riego_f role="button">Off</a>
       </div>
       <div class="col">

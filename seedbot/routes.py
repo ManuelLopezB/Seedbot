@@ -42,8 +42,8 @@ def admin():
 #    led.off()
    return render_template('admin.html', title='Admin', segment='admin')
 
-@app.route('/riego_v')
-def riego_v():
+@app.route('/riego_t')
+def riego_t():
     arduino.write(b'1')
     return ("nothing")
 
