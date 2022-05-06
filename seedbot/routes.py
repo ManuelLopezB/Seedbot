@@ -45,10 +45,12 @@ def admin():
 @app.route('/riego_v')
 def riego_v():
     arduino.write(b'1')
+    return ("nothing")
 
 @app.route('/riego_f')
 def riego_f():
     arduino.write(b'0')
+    return ("nothing")
 
 def gen(video):
     while True:
