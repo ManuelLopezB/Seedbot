@@ -2,9 +2,11 @@ from flask import Response, render_template, flash, redirect, url_for, Flask
 from seedbot import app
 from seedbot.models import User
 from seedbot.forms import LoginForm
+import serial
 import cv2
 import os
 
+arduino = serial.Serial('/dev/ttyACM0', 9600)
 
 if os.environ.get('WERKZEUG_RUN_MAIN') or Flask.debug is False:
     video = cv2.VideoCapture(0)
@@ -31,14 +33,15 @@ def login():
 def about():
     return render_template('about.html', title='About', segment='about')
 
-@app.route('/on')
-def on():
-    return render_template('home.html', title='Led On')
+@app.route('/riego_v')
+def riego_v():
+    arduino.write('rv'.encode())
+    return render_template('home.html')
 
-@app.route('/off')
-def off():
-#    led.off()
-   return render_template('home.html', title='Led Off')
+@app.route('/riego_f')
+def riego_f():
+    arduino.write('rf'.encode())
+    return render_template('home.html')
 
 @app.route('/admin')
 def admin():
