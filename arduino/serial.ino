@@ -8,49 +8,49 @@ int ENB = 13;
 int IN3 = 11;
 int IN4 = 12;
 
-void setup() {
-  pinMode (ENA, OUTPUT);
-  pinMode (ENB, OUTPUT);
-  pinMode (IN1, OUTPUT);
-  pinMode (IN2, OUTPUT);
-  pinMode (IN3, OUTPUT);
-  pinMode (IN4, OUTPUT);
+void setup()
+{
+  pinMode(ENA, OUTPUT);
+  pinMode(ENB, OUTPUT);
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4, OUTPUT);
   Serial.begin(115200);
-  while (!Serial) {
+  while (!Serial)
+  {
     ; // wait for serial port to connect. Needed for native USB
   }
   pinMode(LED_BUILTIN, OUTPUT);
 }
 
-
-void izquierda ()
+void izquierda()
 {
-  //Direccion motor A
-  digitalWrite (IN1, HIGH);
-  digitalWrite (IN2, LOW);
-  analogWrite (ENA, 100); //Velocidad motor A
+  // Direccion motor A
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  analogWrite(ENA, 100); // Velocidad motor A
 }
 
-void derecha ()
+void derecha()
 {
-  //Direccion motor B
-  digitalWrite (IN3, HIGH);
-  digitalWrite (IN4, LOW);
-  analogWrite (ENB, 100); //Velocidad motor B
+  // Direccion motor B
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+  analogWrite(ENB, 100); // Velocidad motor B
 }
 
-void parar ()
+void parar()
 {
-  //Direccion motor A
-  digitalWrite (IN1, LOW);
-  digitalWrite (IN2, LOW);
-  analogWrite (ENA, 0); //Velocidad motor A
-  //Direccion motor B
-  digitalWrite (IN3, LOW);
-  digitalWrite (IN4, LOW);
-  analogWrite (ENB, 0); //Velocidad motor A
+  // Direccion motor A
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  analogWrite(ENA, 0); // Velocidad motor A
+  // Direccion motor B
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
+  analogWrite(ENB, 0); // Velocidad motor A
 }
-
 
 void loop()
 {
@@ -60,18 +60,18 @@ void loop()
     c = Serial.read();
     switch (c)
     {
-      case '0':
-        digitalWrite(LED_BUILTIN, LOW);
-        parar();
-        break;
-      case '1':
-        //        digitalWrite(LED_BUILTIN, HIGH);
-        izquierda();
-        break;
-      case '2':
-        digitalWrite(LED_BUILTIN, HIGH);
-        derecha();
-        break;
+    case '0':
+      digitalWrite(LED_BUILTIN, LOW);
+      parar();
+      break;
+    case '1':
+      //        digitalWrite(LED_BUILTIN, HIGH);
+      izquierda();
+      break;
+    case '2':
+      digitalWrite(LED_BUILTIN, HIGH);
+      derecha();
+      break;
     }
   }
 }
