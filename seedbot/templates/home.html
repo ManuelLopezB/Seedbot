@@ -13,6 +13,16 @@
           });
         });
         $(function() {
+          $('a#preparar_t').on('click', function(e) {
+            e.preventDefault()
+            $.getJSON('/preparar_t',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+        $(function() {
           $('a#riego_t').on('click', function(e) {
             e.preventDefault()
             $.getJSON('/riego_t',
@@ -57,8 +67,8 @@
         <a class="btn btn-primary" href="#" id=apagar role="button">Off</a>
       </div>
       <div class="col">
-        <a class="btn btn-primary" href="#" role="button">On</a>
-        <a class="btn btn-primary" href="#" role="button">Off</a>
+        <a class="btn btn-primary" href="#" id=preparar_t role="button">On</a>
+        <a class="btn btn-primary" href="#" id=apagar role="button">Off</a>
       </div>
     </div>
   </div>

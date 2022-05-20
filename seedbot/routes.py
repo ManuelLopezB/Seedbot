@@ -1,4 +1,4 @@
-from flask import Response, render_template, flash, redirect, url_for, Flask
+from flask import Response, render_template, flash, redirect, url_for, Flask, jsonify
 from seedbot import app
 from seedbot.models import User
 from seedbot.forms import LoginForm
@@ -42,8 +42,18 @@ def admin():
 #    led.off()
    return render_template('admin.html', title='Admin', segment='admin')
 
+@app.route('/humedad')
+def humedad():
+    ack = arduino.read()
+    return jsonify(number = ack)
+
 @app.route('/siembra_t')
 def siembra_t():
+    arduino.write(b'3')
+    return ("nothing")
+
+@app.route('/preparar_t')
+def preparar_t():
     arduino.write(b'2')
     return ("nothing")
 
