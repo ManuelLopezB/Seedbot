@@ -7,10 +7,15 @@ import time
 import cv2
 import os
 
-arduino = serial.Serial("/dev/ttyACM0", 115200, timeout=1)
+try:
+    arduino = serial.Serial("/dev/ttyACM0", 115200, timeout=1)
+except:
+    arduino = serial.Serial("/dev/ttyUSB0", 115200, timeout=1)
+
 
 if os.environ.get('WERKZEUG_RUN_MAIN') or Flask.debug is False:
     video = cv2.VideoCapture(0)
+
 
 @app.route('/')
 @app.route('/home')
@@ -20,6 +25,7 @@ def home():
     arduino.setDTR(True)
     time.sleep(2)
     return render_template('home.html', title='Home', segment='home')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -33,14 +39,17 @@ def login():
 
     return render_template('login.html', title='Login', form=form, segment='login')
 
+
 @app.route('/about')
 def about():
     return render_template('about.html', title='About', segment='about')
 
+
 @app.route('/admin')
 def admin():
-#    led.off()
-   return render_template('admin.html', title='Admin', segment='admin')
+    #    led.off()
+    return render_template('admin.html', title='Admin', segment='admin')
+
 
 @app.route('/humedad')
 def humedad():
@@ -57,15 +66,18 @@ def preparar_t():
     arduino.write(b'2')
     return ("nothing")
 
+
 @app.route('/riego_t')
 def riego_t():
     arduino.write(b'1')
     return ("nothing")
 
+
 @app.route('/apagar')
 def apagar():
     arduino.write(b'0')
     return ("nothing")
+
 
 def gen(video):
     while True:
@@ -76,6 +88,7 @@ def gen(video):
         frame = jpeg.tobytes()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
 
 @app.route('/video_feed')
 def video_feed():
