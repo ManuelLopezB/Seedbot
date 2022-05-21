@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-# from gpiozero import LED, Servo
 from time import sleep
 
 app = Flask(__name__)
@@ -9,5 +8,3 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 from seedbot import routes
-# led = LED(21)
-# servo = Servo(17)
