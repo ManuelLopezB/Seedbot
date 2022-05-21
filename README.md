@@ -14,7 +14,7 @@ Seedbot is the final proyect for our mechatronics class.
 - [OpenCV](https://www.piwheels.org/project/opencv-python/)
 
 ## Requirements
-- Python 3.8+
+- Python 3.8+ (tested in python 3.8.10 and 3.9.2)
 - Install the required dependencies for OpenCV from this [link](https://www.piwheels.org/project/opencv-python/)
 - Install the required pip packages with:
   
