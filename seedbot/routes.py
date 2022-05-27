@@ -10,7 +10,10 @@ import os
 try:
     arduino = serial.Serial("/dev/ttyACM0", 115200, timeout=1)
 except:
-    arduino = serial.Serial("/dev/ttyUSB0", 115200, timeout=1)
+    try:
+        arduino = serial.Serial("/dev/ttyUSB0", 115200, timeout=1)
+    except:
+        pass
 
 
 if os.environ.get('WERKZEUG_RUN_MAIN') or Flask.debug is False:
@@ -20,10 +23,13 @@ if os.environ.get('WERKZEUG_RUN_MAIN') or Flask.debug is False:
 @app.route('/')
 @app.route('/home')
 def home():
-    time.sleep(1)
-    arduino.flushInput()
-    arduino.setDTR(True)
-    time.sleep(2)
+    try:
+        time.sleep(1)
+        arduino.flushInput()
+        arduino.setDTR(True)
+        time.sleep(2)
+    except:
+        pass
     return render_template('home.html', title='Home', segment='home')
 
 
@@ -42,12 +48,12 @@ def login():
 
 @app.route('/about')
 def about():
-    return render_template('about.html', title='About', segment='about')
+    ack = arduino.readline().strip()
+    return render_template('about.html', title='About', segment='about', ack=ack)
 
 
 @app.route('/admin')
 def admin():
-    #    led.off()
     return render_template('admin.html', title='Admin', segment='admin')
 
 
