@@ -45,10 +45,13 @@ def login():
 
     return render_template('login.html', title='Login', form=form, segment='login')
 
+# @app.route('/update')
+# def update():
+#     ack = arduino.readline().strip()
+#     return jsonify(ack=ack)
 
 @app.route('/about')
 def about():
-    while True:
         ack = arduino.readline().strip()
         print(ack)
     return render_template('about.html', title='About', segment='about', ack=ack)
