@@ -48,7 +48,9 @@ def login():
 
 @app.route('/about')
 def about():
-    ack = arduino.readline().strip()
+    while True:
+        ack = arduino.readline().strip()
+        print(ack)
     return render_template('about.html', title='About', segment='about', ack=ack)
 
 
