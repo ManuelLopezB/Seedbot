@@ -72,6 +72,7 @@ void loop()
     int sensorValue = 1023 - analogRead(A0);
     int val = map(sensorValue, 0, 1023, 0, 100);
     char c;
+    Serial.println(val);
     
     if (Serial.available() > 0)
     {
@@ -95,11 +96,8 @@ void loop()
                 //digitalWrite(LED_BUILTIN, HIGH);
                 agua();
                 break;
-            case '4':
                 //digitalWrite(LED_BUILTIN, HIGH);
                 //Serial.write(val);
-                Serial.println(val);
-                break;
         }
     }
 }
