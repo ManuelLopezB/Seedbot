@@ -6,6 +6,8 @@ Seedbot is the final proyect for our mechatronics class.
 
 ## Hardware Used
 - [Raspberry Pi 3 Model B+](https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/)
+- [Gravity: Arduino Shield para Raspberry Pi B+/2B/3B/3B+/4B](https://www.dfrobot.com/product-1211.html)
+
 
 ## Software Used
 - [Python](https://www.python.org/)
@@ -20,4 +22,4 @@ Seedbot is the final proyect for our mechatronics class.
   
         pip install -r requirements.txt
 
-## Setup
+## Running the app
